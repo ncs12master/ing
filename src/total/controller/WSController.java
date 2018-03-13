@@ -48,8 +48,7 @@ public class WSController extends TextWebSocketHandler {
 		for (WebSocketSession ws : wsSessions) {
 			ws.sendMessage(new TextMessage(json));
 		}
-
-	} 
+	}  
 
 	@Override // 클라측에서 메세지가 들어올때.
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
