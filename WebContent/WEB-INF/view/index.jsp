@@ -26,6 +26,35 @@
 				href="/join"><span>Sign up</span></a>
 		</div>
 		<hr />
+		<div class="alert alert-info">
+			<b>현재접속자수:<span id="cnt"></span></b> / 
+			<strong>서버알림</strong><span id="info">-</span>
+		</div>
 	</div>
+	<script>
+		var ws = new WebSocket("ws://${pageContext.request.serverName}/handle");
+		// 연결이 됬을때. 
+		ws.onopen = function() {
+			console.log("opened ");
+			console.log(this);
+		}
+		// 메시지가 들어올때.  
+		ws.onmessage = function(resp) {
+			console.log(resp);
+			var obj = JSON.parse(resp.data);	// {"cnt" : ??, "info" :""}
+			$("#cnt").html(obj.cnt);
+			$("#info").html(obj.info);
+		}
+		// 연결이 끊길때. 
+		ws.onclose = function() {
+			window.alert("연결이 해제되었습니다.");
+		}
+	</script>
 </body>
 </html>
+
+
+
+
+
+
