@@ -27,5 +27,15 @@
 		</div>
 		<hr />
 	</div>
+	<script>
+		var ws = new WebSocket("ws://${pageContext.request.serverName}/alert");
+		ws.onmessage = function(rst) {
+			console.log(rst);
+			var obj = JSON.parse(rst);
+		}
+		
+	
+	</script>
 </body>
 </html>
+
