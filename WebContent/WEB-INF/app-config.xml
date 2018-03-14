@@ -19,6 +19,8 @@
 	<context:component-scan base-package="total.service" />
 	
 	<!-- websocket setting -->
+	<bean id="sessions" class="total.model.WebSocketMap"/>
+	
 	<websocket:handlers>
 		<websocket:mapping handler="alertController" path="/alert"/>
 		<websocket:handshake-interceptors>

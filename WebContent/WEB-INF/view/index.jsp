@@ -20,6 +20,10 @@
 			<h1>Spring Project</h1>
 			<small>- ${ment } -</small>
 		</div>
+		<div class="alert alert-warning alert-dismissible" id="warn" style="display: none">
+			<a href="javascript:location.reload();" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>경고!</strong> 다른 윈도우 혹은 탭에서 상태가 변경되었습니다.
+		</div>
 		<hr />
 		<div align="right" style="padding-right: 20px;">
 			<a href="/login"><span>Sign in</span></a> <span>or</span> <a
@@ -31,10 +35,9 @@
 		var ws = new WebSocket("ws://${pageContext.request.serverName}/alert");
 		ws.onmessage = function(rst) {
 			console.log(rst);
-			var obj = JSON.parse(rst);
+			$("#warn").show();
+			// var obj = JSON.parse(rst);
 		}
-		
-	
 	</script>
 </body>
 </html>
