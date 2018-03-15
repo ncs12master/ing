@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
@@ -14,6 +16,18 @@
 	<context:component-scan base-package="total.controller" />
 	<context:component-scan base-package="total.service" />
 
+
+	<websocket:handlers>
+		<websocket:mapping handler="logonSocketController"
+			path="/logonWs" />
+		<websocket:handshake-interceptors>
+			<bean
+				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+
+
+	<bean class="com.google.gson.Gson" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
@@ -39,18 +53,19 @@
 		<constructor-arg name="sqlSessionFactory" ref="factory" />
 	</bean>
 	<!-- mail sender setting -->
-	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
-		<property name="host" value="smtp.gmail.com"/>
-		<property name="username" value="ncs13master@gmail.com"/>
-		<property name="password" value="1q2w3e4r~"/>
-		<property name="port" value="587"/>
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl"
+		id="mailSender">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="username" value="ncs13master@gmail.com" />
+		<property name="password" value="1q2w3e4r~" />
+		<property name="port" value="587" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.starttls.enable">true</prop>
 			</props>
 		</property>
 	</bean>
-	
+
 
 </beans>
 

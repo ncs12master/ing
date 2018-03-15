@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/">PROJECT</a>
+				<a class="navbar-brand" href="/">${logon },LOGON</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="#">개인정보</a></li>
@@ -34,11 +34,17 @@
 		</div>
 	</nav>
 	
-	
-	
 	<script>
-		var ws = new WebSocket("ws://${pageContext.request.serverName}/logonWs");
+		var onws = new WebSocket("ws://${pageContext.request.serverName}/logonWs");
 		
+		onws.onmessage = function(rst) {
+			var obj = JSON.parse(rst.data);
+			switch(obj.mode) {
+			case "fr_req":
+				window.alert(obj.from+" 님으로부터 친구 요청이 발생하였습니다.");
+				break;
+			}
+		}
 	</script>
 </body>
 </html>
