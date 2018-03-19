@@ -26,7 +26,7 @@
 	<div align="center" class="container">
 		<form action="/session" method="post" >
 			<div>
-				<h1>Sign in to SPRING</h1>
+				<h1>Sign in to spring</h1>
 			</div>
 			<c:if test="${!empty err }">
 			<div class="alert alert-danger">${err }</div>
