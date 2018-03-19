@@ -19,7 +19,7 @@
 		margin-bottom: 7px;
 	}
 	input {
-		margin-bottom: 15px;
+		margin-bottom: 15px; 
 	}
 </style>
 <body>
