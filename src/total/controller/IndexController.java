@@ -18,9 +18,10 @@ public class IndexController {
 	public String indexHandle(Model model, HttpSession session) {
 		if(session.getAttribute("logon")==null) {
 			model.addAttribute("ment", greetService.make());
-			return "index";
+			return "t_index";
 		}else {
-			return "logon";
+			model.addAttribute("main", "/index.jsp");
+			return "t_el";
 		}
 	}
 }

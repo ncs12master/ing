@@ -33,7 +33,9 @@ public class LogInOutController {
 			return "redirect:/";
 		} else {
 			model.addAttribute("err", "logon failed");
-			return "login";
+			model.addAttribute("main" , "/login.jsp");
+			model.addAttribute("title" , "login faild.");
+			return "t_el_title";
 		}
 	}
 }

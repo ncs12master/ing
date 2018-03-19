@@ -25,7 +25,7 @@ public class JoinController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String joinGetHandle(Model model) {
 		model.addAttribute("ment", greetService.make());
-		return "join";
+		return "t_join";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
